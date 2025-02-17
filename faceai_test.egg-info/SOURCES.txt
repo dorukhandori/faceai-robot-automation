@@ -1,0 +1,17 @@
+setup.py
+faceai_test.egg-info/PKG-INFO
+faceai_test.egg-info/SOURCES.txt
+faceai_test.egg-info/dependency_links.txt
+faceai_test.egg-info/requires.txt
+faceai_test.egg-info/top_level.txt
+resources/__init__.py
+resources/pages/__init__.py
+resources/pages/base_page.py
+resources/pages/paywall_page.py
+utils/__init__.py
+utils/appium_server.py
+utils/appium_service.py
+utils/driver_factory.py
+utils/report_utils.py
+utils/server_manager.py
+utils/test_utils.py

@@ -1,0 +1,54 @@
+environments:
+  ios_simulator:
+    platformName: "iOS"
+    platformVersion: "15.0"
+    deviceName: "iPhone"
+    automationName: "XCUITest"
+    udid: "15b95c4404b92c876d5aab4e4e1a5b896febc4c1"
+    bundleId: "co.koiapps.faceai"
+    appium:
+      host: "127.0.0.1"
+      port: 4723
+      basePath: "/"
+    timeouts:
+      implicit: 10
+      pageLoad: 30
+      script: 30
+    capabilities:
+      newCommandTimeout: 300
+      autoDismissAlerts: true
+      relaxedSecurity: true
+      allowInsecure:
+        - "chromedriver_autodownload"
+
+  ios_real_device:
+    platformName: "iOS"
+    platformVersion: "15.0"
+    deviceName: "iPhone"
+    automationName: "XCUITest"
+    udid: "15b95c4404b92c876d5aab4e4e1a5b896febc4c1"
+    bundleId: "co.koiapps.faceai"
+    appium:
+      host: "127.0.0.1"
+      port: 4723
+      basePath: "/"
+    timeouts:
+      implicit: 10
+      pageLoad: 30
+      script: 30
+    capabilities:
+      newCommandTimeout: 300
+      autoDismissAlerts: true
+      relaxedSecurity: true
+      allowInsecure:
+        - "chromedriver_autodownload"
+
+capabilities:
+  platformName: "iOS"
+  platformVersion: "15.0"
+  deviceName: "iPhone"
+  automationName: "XCUITest"
+  udid: "15b95c4404b92c876d5aab4e4e1a5b896febc4c1"
+  bundleId: "co.koiapps.faceai"
+  newCommandTimeout: 300
+  autoDismissAlerts: true 

@@ -1,0 +1,68 @@
+WARN Appium Appium encountered 2 warnings while validating drivers found in manifest /Users/dori/node_modules/.cache/appium/extensions.yaml
+WARN Appium Driver "uiautomator2" has 1 potential problem: 
+WARN Appium   - Driver "uiautomator2" (package `appium-uiautomator2-driver`) may be incompatible with the current version of Appium (v2.0.1) due to its peer dependency on older Appium v^2.4.1. Please upgrade `appium-uiautomator2-driver` to v3.10.0 or newer.
+[35m[Appium][39m Welcome to Appium v2.0.1
+[35m[Appium][39m Non-default server args:
+[35m[Appium][39m { address: [32m'127.0.0.1'[39m,
+[35m[Appium][39m   allowInsecure: [ [32m'chromedriver_autodownload'[39m ],
+[35m[Appium][39m   basePath: [32m'/wd/hub'[39m,
+[35m[Appium][39m   relaxedSecurityEnabled: [33mtrue[39m,
+[35m[Appium][39m   useDrivers: [ [32m'xcuitest'[39m ] }
+[35m[Appium][39m Attempting to load driver xcuitest...
+[debug] [35m[Appium][39m Requiring driver at /Users/dori/node_modules/appium-xcuitest-driver
+[35m[Appium][39m Could not load driver 'xcuitest', so it will not be available. Error in loading the driver was: Cannot find module '/Users/dori/node_modules/appium-xcuitest-driver/node_modules/appium-webdriveragent/build/index.js'. Please verify that the package.json has a valid "main" entry
+[debug] [35m[Appium][39m Error: Cannot find module '/Users/dori/node_modules/appium-xcuitest-driver/node_modules/appium-webdriveragent/build/index.js'. Please verify that the package.json has a valid "main" entry
+[debug] [35m[Appium][39m     at tryPackage (node:internal/modules/cjs/loader:353:19)
+[debug] [35m[Appium][39m     at Function.Module._findPath (node:internal/modules/cjs/loader:566:18)
+[debug] [35m[Appium][39m     at Function.Module._resolveFilename (node:internal/modules/cjs/loader:919:27)
+[debug] [35m[Appium][39m     at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+[debug] [35m[Appium][39m     at Module.require (node:internal/modules/cjs/loader:1005:19)
+[debug] [35m[Appium][39m     at require (node:internal/modules/cjs/helpers:102:18)
+[debug] [35m[Appium][39m     at Object.<anonymous> (/Users/dori/node_modules/appium-xcuitest-driver/lib/driver.js:5:1)
+[debug] [35m[Appium][39m     at Module._compile (node:internal/modules/cjs/loader:1105:14)
+[debug] [35m[Appium][39m     at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+[debug] [35m[Appium][39m     at Module.load (node:internal/modules/cjs/loader:981:32)
+[debug] [35m[Appium][39m     at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+[debug] [35m[Appium][39m     at Module.require (node:internal/modules/cjs/loader:1005:19)
+[debug] [35m[Appium][39m     at require (node:internal/modules/cjs/helpers:102:18)
+[debug] [35m[Appium][39m     at Object.<anonymous> (/Users/dori/node_modules/appium-xcuitest-driver/index.js:2:1)
+[debug] [35m[Appium][39m     at Module._compile (node:internal/modules/cjs/loader:1105:14)
+[debug] [35m[Appium][39m     at Object.Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+[debug] [35m[Appium][39m     at Module.load (node:internal/modules/cjs/loader:981:32)
+[debug] [35m[Appium][39m     at Function.Module._load (node:internal/modules/cjs/loader:822:12)
+[debug] [35m[Appium][39m     at Module.require (node:internal/modules/cjs/loader:1005:19)
+[debug] [35m[Appium][39m     at require (node:internal/modules/cjs/helpers:102:18)
+[debug] [35m[Appium][39m     at DriverConfig.require (/usr/local/lib/node_modules/appium/lib/extension/extension-config.js:578:23)
+[debug] [35m[Appium][39m     at /usr/local/lib/node_modules/appium/lib/extension/index.js:83:46
+[35m[Appium][39m Appium REST http interface listener started on http://127.0.0.1:4723/wd/hub
+[35m[Appium][39m Available drivers:
+[35m[Appium][39m   - uiautomator2@3.5.1 (automationName 'UiAutomator2')
+[35m[Appium][39m   - xcuitest@4.12.2 (automationName 'XCUITest')
+[35m[Appium][39m No plugins have been installed. Use the "appium plugin" command to install the one(s) you want to use.
+[38;5;0m[HTTP][0m [37m-->[39m [37mGET[39m [37m/wd/hub/status[39m [90m{}[39m
+[debug] [38;5;16m[AppiumDriver@a4e8][0m Calling AppiumDriver.getStatus() with args: []
+[debug] [38;5;16m[AppiumDriver@a4e8][0m Responding to client with driver.getStatus() result: {"build":{"version":"2.0.1"}}
+[38;5;0m[HTTP][0m [37m<-- GET /wd/hub/status [39m[32m200[39m [90m3 ms - 39[39m [90m[39m
+[debug] [38;5;0m[HTTP][0m Request idempotency key: 790971f0-d923-41d4-9c81-f7394dd0e694
+[38;5;0m[HTTP][0m [37m-->[39m [37mPOST[39m [37m/wd/hub/session[39m [90m{"capabilities":{"firstMatch":[{}],"alwaysMatch":{"appium:automationName":"XCUITest","platformName":"iOS","appium:deviceName":"iPhone","appium:platformVersion":"15.0","appium:udid":"15b95c4404b92c876d5aab4e4e1a5b896febc4c1","appium:bundleId":"co.koiapps.faceai","appium:newCommandTimeout":300,"appium:autoDismissAlerts":true}}}[39m
+[debug] [38;5;16m[AppiumDriver@a4e8][0m Calling AppiumDriver.createSession() with args: [null,null,{"firstMatch":[{}],"alwaysMatch":{"appium:automationName":"XCUITest","platformName":"iOS","appium:deviceName":"iPhone","appium:platformVersion":"15.0","appium:udid":"15b95c4404b92c876d5aab4e4e1a5b896febc4c1","appium:bundleId":"co.koiapps.faceai","appium:newCommandTimeout":300,"appium:autoDismissAlerts":true}}]
+[debug] [38;5;16m[AppiumDriver@a4e8][0m Event 'newSessionRequested' logged at 1739722767387 (19:19:27 GMT+0300 (GMT+03:00))
+[35m[Appium][39m Attempting to find matching driver for automationName 'XCUITest' and platformName 'iOS'
+[35m[Appium][39m The 'xcuitest' driver was installed and matched caps.
+[35m[Appium][39m Will require it at /Users/dori/node_modules/appium-xcuitest-driver
+[debug] [35m[Appium][39m Requiring driver at /Users/dori/node_modules/appium-xcuitest-driver
+[debug] [38;5;16m[AppiumDriver@a4e8][0m Event 'newSessionStarted' logged at 1739722767392 (19:19:27 GMT+0300 (GMT+03:00))
+[debug] [38;5;16m[AppiumDriver@a4e8][0m Encountered internal error running command: Error: Could not find a driver for automationName 'XCUITest' and platformName 'iOS'. Have you installed a driver that supports those capabilities? Run 'appium driver list --installed' to see. (Lower-level error: Cannot find module '/Users/dori/node_modules/appium-xcuitest-driver/node_modules/appium-webdriveragent/build/index.js'. Please verify that the package.json has a valid "main" entry)
+[debug] [38;5;16m[AppiumDriver@a4e8][0m     at DriverConfig.findMatchingDriver (/usr/local/lib/node_modules/appium/lib/extension/driver-config.js:175:13)
+[debug] [38;5;16m[AppiumDriver@a4e8][0m     at AppiumDriver.createSession (/usr/local/lib/node_modules/appium/lib/appium.js:279:29)
+[debug] [38;5;16m[AppiumDriver@a4e8][0m     at runCommandPromise (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/driver.ts:115:20)
+[debug] [38;5;16m[AppiumDriver@a4e8][0m     at AppiumDriver.executeCommand (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/driver.ts:160:15)
+[debug] [38;5;16m[AppiumDriver@a4e8][0m     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[debug] [38;5;16m[AppiumDriver@a4e8][0m     at defaultBehavior (/usr/local/lib/node_modules/appium/lib/appium.js:696:16)
+[debug] [38;5;16m[AppiumDriver@a4e8][0m     at AppiumDriver.executeWrappedCommand (/usr/local/lib/node_modules/appium/lib/appium.js:806:16)
+[debug] [38;5;16m[AppiumDriver@a4e8][0m     at AppiumDriver.executeCommand (/usr/local/lib/node_modules/appium/lib/appium.js:712:17)
+[debug] [38;5;16m[AppiumDriver@a4e8][0m     at asyncHandler (/usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/protocol/protocol.js:387:19)
+[38;5;0m[HTTP][0m [37m<-- POST /wd/hub/session [39m[31m500[39m [90m18 ms - 1276[39m [90m[39m
+[35m[Appium][39m Received SIGTERM - shutting down
+[debug] [38;5;16m[AppiumDriver@a4e8][0m There are no active sessions for cleanup
+[38;5;0m[HTTP][0m Closing Appium HTTP server
