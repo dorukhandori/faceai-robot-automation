@@ -1,11 +1,34 @@
+# iOS Test Ortamı Ayarları
+ios:
+  appium:platformName: 'iOS'
+  appium:automationName: 'XCUITest'
+  appium:deviceName: 'iPhone(2)'
+  appium:platformVersion: '15'
+  appium:bundleId: 'co.koiapps.faceai'
+  appium:udid: '15b95c4404b92c876d5aab4e4e1a5b896febc4c1'
+  appium:xcodeOrgId: 'YOUR_TEAM_ID'  # security find-identity'den
+  appium:app: '/path/to/your/FaceAI.app'  # .app dosyasının yolu
+  appium:xcodeSigningId: 'Apple Distributor'
+  appium:noReset: true
+  appium:fullReset: false
+  appium:useNewWDA: false
+  appium:usePrebuiltWDA: true
+  appium:autoAcceptAlerts: true
+  appium:newCommandTimeout: 60000
+
+# Appium Sunucu Ayarları
+appium:
+  host: 'localhost'
+  port: 4723
+
 environments:
   ios_simulator:
-    platformName: "iOS"
-    platformVersion: "15.0"
-    deviceName: "iPhone"
-    automationName: "XCUITest"
-    udid: "15b95c4404b92c876d5aab4e4e1a5b896febc4c1"
-    bundleId: "co.koiapps.faceai"
+    appium:platformName: "iOS"
+    appium:platformVersion: "15.0"
+    appium:deviceName: "iPhone"
+    appium:automationName: "XCUITest"
+    appium:udid: "15b95c4404b92c876d5aab4e4e1a5b896febc4c1"
+    appium:bundleId: "co.koiapps.faceai"
     appium:
       host: "127.0.0.1"
       port: 4723
@@ -22,12 +45,12 @@ environments:
         - "chromedriver_autodownload"
 
   ios_real_device:
-    platformName: "iOS"
-    platformVersion: "15.0"
-    deviceName: "iPhone"
-    automationName: "XCUITest"
-    udid: "15b95c4404b92c876d5aab4e4e1a5b896febc4c1"
-    bundleId: "co.koiapps.faceai"
+    appium:platformName: "iOS"
+    appium:platformVersion: "15.0"
+    appium:deviceName: "iPhone"
+    appium:automationName: "XCUITest"
+    appium:udid: "15b95c4404b92c876d5aab4e4e1a5b896febc4c1"
+    appium:bundleId: "co.koiapps.faceai"
     appium:
       host: "127.0.0.1"
       port: 4723
@@ -44,11 +67,11 @@ environments:
         - "chromedriver_autodownload"
 
 capabilities:
-  platformName: "iOS"
-  platformVersion: "15.0"
-  deviceName: "iPhone"
-  automationName: "XCUITest"
-  udid: "15b95c4404b92c876d5aab4e4e1a5b896febc4c1"
-  bundleId: "co.koiapps.faceai"
-  newCommandTimeout: 300
-  autoDismissAlerts: true 
+  appium:platformName: "iOS"
+  appium:platformVersion: "15.0"
+  appium:deviceName: "iPhone"
+  appium:automationName: "XCUITest"
+  appium:udid: "15b95c4404b92c876d5aab4e4e1a5b896febc4c1"
+  appium:bundleId: "co.koiapps.faceai"
+  appium:newCommandTimeout: 300
+  appium:autoDismissAlerts: true 

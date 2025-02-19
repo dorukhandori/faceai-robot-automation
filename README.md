@@ -67,12 +67,14 @@ pip install -r requirements.txt
 
 The project includes the following test scenarios:
 
-1. **Paywall Screen Verification**:
-   - Verifies that the paywall screen loads correctly.
-   - Checks if all elements (subscription options, pricing details, buttons) are visible.
+1. **Appium Server Verification**:
+   - Verifies that the Appium server is running successfully.
 
-2. **App Launch Test**:
-   - Verifies that the application launches successfully.
+2. **Paywall Screen Verification**:
+   - Verifies that the paywall screen appears within 10 seconds.
+
+3. **Key Paywall Elements Verification**:
+   - Verifies that the key elements (plan, price, button) are visible on the paywall screen.
 
 ---
 

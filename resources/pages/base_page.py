@@ -15,17 +15,17 @@ class BasePage:
         
     @keyword
     def wait_until_element_visible(self, locator, timeout=10):
-        """Waits until the element is visible"""
+        """Belirtilen süre içinde elementin görünür olmasını bekler"""
         try:
-            # Check if the element is visible
+            WebDriverWait(self.appium._current_application(), timeout).until(
+                EC.visibility_of_element_located(locator)
+            )
             return True
-        except Exception as e:
-            logger.error(f"Element is not visible: {str(e)}")
+        except TimeoutException:
             return False
             
-    def wait_until_elements_visible(self, locators, timeout=None):
-        """Waits until multiple elements are visible"""
-        timeout = timeout or self.default_timeout
+    def wait_until_elements_visible(self, locators, timeout=10):
+        """Birden fazla elementin görünür olmasını bekler"""
         try:
             for locator in locators:
                 if not self.wait_until_element_visible(locator, timeout):

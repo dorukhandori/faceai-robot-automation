@@ -1,56 +1,57 @@
-from resources.pages.base_page import BasePage
 from appium.webdriver.common.appiumby import AppiumBy
-import logging
-from robot.api.deco import keyword
+from robot.api.deco import keyword, library
+from robot.libraries.BuiltIn import BuiltIn
+from resources.pages.base_page import BasePage
+import allure
 
-logger = logging.getLogger(__name__)
-
+@library(scope='GLOBAL')
 class PaywallPage(BasePage):
     def __init__(self):
         super().__init__()
+        self.appium = BuiltIn().get_library_instance('AppiumLibrary')
         
-        # Locators
-        self.subscription_options = (AppiumBy.XPATH, "//XCUIElementTypeStaticText[@name='Subscription Options']")
-        self.pricing_details = (AppiumBy.XPATH, "//XCUIElementTypeStaticText[@name='Pricing Details']")
-        self.subscribe_button = (AppiumBy.ACCESSIBILITY_ID, "Subscribe Now")
-        self.skip_button = (AppiumBy.ACCESSIBILITY_ID, "Skip")
+        # Weekly Plan Elements
+        self.WEEKLY_PLAN_TEXT = (AppiumBy.ACCESSIBILITY_ID, "51000000-0000-0000-CF0A-000000000000")
+        self.WEEKLY_PRICE_TEXT = (AppiumBy.ACCESSIBILITY_ID, "52000000-0000-0000-CF0A-000000000000")
+        self.WEEKLY_POPULAR_BADGE = (AppiumBy.ACCESSIBILITY_ID, "41000000-0000-0000-CF0A-000000000000")
         
-        # New locators
-        self.weekly_plan_text = (AppiumBy.ACCESSIBILITY_ID, "2D000000-0000-0000-AD0C-000000000000")
-        self.weekly_price_text = (AppiumBy.ACCESSIBILITY_ID, "2E000000-0000-0000-AD0C-000000000000")
-        self.weekly_button = (AppiumBy.ACCESSIBILITY_ID, "28000000-0000-0000-AD0C-000000000000")
+        # Yearly Plan Elements
+        self.YEARLY_PLAN_TEXT = (AppiumBy.ACCESSIBILITY_ID, "53000000-0000-0000-CF0A-000000000000")
+        self.YEARLY_PRICE_TEXT = (AppiumBy.ACCESSIBILITY_ID, "54000000-0000-0000-CF0A-000000000000")
+        self.YEARLY_TOP_CHOICE_BADGE = (AppiumBy.ACCESSIBILITY_ID, "43000000-0000-0000-CF0A-000000000000")
         
-    @keyword
-    def verify_paywall_elements(self):
-        """Paywall elementlerinin varlığını doğrular"""
-        try:
-            elements = [
-                self.subscription_options,
-                self.pricing_details,
-                self.subscribe_button,
-                self.skip_button
-            ]
-            
-            for element in elements:
-                if not self.wait_until_element_visible(element, timeout=10):
-                    return False
-            return True
-        except Exception as e:
-            logger.error(f"Paywall elementleri kontrol edilirken hata: {str(e)}")
-            return False
+        # Lifetime Plan Elements
+        self.LIFETIME_PLAN_TEXT = (AppiumBy.ACCESSIBILITY_ID, "55000000-0000-0000-CF0A-000000000000")
+        
+        # Paywall Screen
+        self.PAYWALL_SCREEN = (AppiumBy.XPATH, "//XCUIElementTypeApplication[@name='Face AI']/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]")
 
-    def wait_for_weekly_elements(self, timeout=None):
-        """Weekly elementlerinin görünür olmasını bekler"""
-        weekly_elements = [
-            self.weekly_plan_text,
-            self.weekly_price_text,
-            self.weekly_button
-        ]
-        return self.wait_until_elements_visible(weekly_elements, timeout)
-        
     @keyword
-    def verify_weekly_elements(self):
-        """Weekly elementlerinin varlığını doğrular"""
-        if not self.wait_for_weekly_elements():
-            raise AssertionError("Weekly elementleri görünür değil!")
-        return True 
+    def verify_paywall_screen_is_visible(self, timeout=10):
+        """Verifies if the paywall screen is visible"""
+        return self.wait_until_element_visible(self.PAYWALL_SCREEN, timeout)
+
+    @keyword
+    def verify_weekly_plan_elements_are_visible(self):
+        """Verifies if weekly plan elements are visible"""
+        elements = [
+            self.WEEKLY_PLAN_TEXT,
+            self.WEEKLY_PRICE_TEXT,
+            self.WEEKLY_POPULAR_BADGE
+        ]
+        return self.wait_until_elements_visible(elements)
+
+    @keyword
+    def verify_yearly_plan_elements_are_visible(self):
+        """Verifies if yearly plan elements are visible"""
+        elements = [
+            self.YEARLY_PLAN_TEXT,
+            self.YEARLY_PRICE_TEXT,
+            self.YEARLY_TOP_CHOICE_BADGE
+        ]
+        return self.wait_until_elements_visible(elements)
+
+    @keyword
+    def verify_lifetime_plan_elements_are_visible(self):
+        """Verifies if lifetime plan element is visible"""
+        return self.wait_until_element_visible(self.LIFETIME_PLAN_TEXT) 

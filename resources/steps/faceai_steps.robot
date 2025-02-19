@@ -1,48 +1,42 @@
 *** Settings ***
 Library    AppiumLibrary
 Library    ${CURDIR}/../../utils/driver_factory.py    WITH NAME    Driver
-Library    ${CURDIR}/../../resources/pages/paywall_page.py
+Library    ${CURDIR}/../pages/paywall_page.py    WITH NAME    Paywall
+
+Variables    ${CURDIR}/../../envm.yaml
 
 *** Keywords ***
 Application Is Launched
-    [Documentation]    Launches the application and verifies it is initialized
-    [Tags]    allure
-    # Driver'ın aktif olduğunu kontrol et
+    [Documentation]    Verifies that the application is launched
     ${is_initialized}=    Driver.Is Driver Initialized
-    Run Keyword If    not ${is_initialized}    Fatal Error    WebDriver başlatılamadı!
-    
-    # Uygulamanın başlatıldığını kontrol et
-    Wait Until Keyword Succeeds    30s    2s    Page Should Contain Element    xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]
-    Sleep    10s    # Uygulamanın tam olarak yüklenmesi için 10 saniye bekle
-    ${paywall_page}=    Get Library Instance    PaywallPage
-    Wait Until Keyword Succeeds    30s    2s    Verify Weekly Elements Are Present
+    Should Be True    ${is_initialized}    WebDriver could not be initialized!
+    Sleep    2s    # Short wait for the application to load
 
-Wait Until Paywall Screen Appears
-    [Documentation]    Waits until the paywall screen is visible
+Verify Paywall Screen Appears Within Timeout
+    [Documentation]    Verifies if the paywall screen appears within the specified timeout
+    [Arguments]    ${timeout}=10
+    ${result}=    Paywall.Verify Paywall Screen Is Visible    ${timeout}
+    Should Be True    ${result}    Paywall screen is not visible within ${timeout} seconds!
+
+Verify Weekly Plan Elements Are Present
+    [Documentation]    Verifies that weekly plan elements are visible
+    ${result}=    Paywall.Verify Weekly Plan Elements Are Visible
+    Should Be True    ${result}    Weekly plan elements are not visible!
+
+Verify Yearly Plan Elements Are Present
+    [Documentation]    Verifies that yearly plan elements are visible
+    ${result}=    Paywall.Verify Yearly Plan Elements Are Visible
+    Should Be True    ${result}    Yearly plan elements are not visible!
+
+Verify Lifetime Plan Elements Are Present
+    [Documentation]    Verifies that lifetime plan elements are visible
+    ${result}=    Paywall.Verify Lifetime Plan Elements Are Visible
+    Should Be True    ${result}    Lifetime plan element is not visible!
+
+Check Appium Logs For Success
+    [Documentation]    Checks Appium logs for successful HTTP request
     [Tags]    allure
-    [Arguments]    ${timeout}=30s
-    # Driver'ın aktif olduğunu kontrol et
-    ${is_initialized}=    Driver.Is Driver Initialized
-    Run Keyword If    not ${is_initialized}    Fatal Error    WebDriver başlatılamadı!
-    
-    # Ekranın yüklenmesi için kısa bir bekleme
-    Sleep    2s
-    
-    # Paywall ekranının yüklenmesini bekle
-    ${paywall_page}=    Get Library Instance    PaywallPage
-    Wait Until Keyword Succeeds    ${timeout}    2s    Page Should Contain Element    ${paywall_page.subscription_options}
-    
-    # Ekran görüntüsü al
-    Capture Page Screenshot
-
-Verify All Paywall Elements Are Present
-    [Documentation]    Verifies that all paywall elements are visible
-    [Tags]    allure
-    ${paywall_page}=    Get Library Instance    PaywallPage
-    ${result}=    Call Method    ${paywall_page}    verify_paywall_elements
-    Should Be True    ${result}    Paywall elements are not visible
-
-Verify Weekly Elements Are Present
-    ${paywall_page}=    Get Library Instance    PaywallPage
-    ${result}=    Call Method    ${paywall_page}    verify_weekly_elements
-    Should Be True    ${result}    Weekly elements are not visible 
+    ${log_file}=    Set Variable    ${EXECDIR}/appium.log
+    ${log_content}=    Get File    ${log_file}
+    ${success}=    Evaluate    "GET /status 200" in """${log_content}"""
+    Should Be True    ${success}    Successful request not found in Appium logs 

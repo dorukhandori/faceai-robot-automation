@@ -1,3 +1,55 @@
-# Allure raporları
+# IDE ve editör dosyaları
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python dosyaları
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Log ve cache dosyaları
+*.log
+*.sqlite
+*.db
+*.cache
+*.pid
+*.pid.lock
+
+# Test ve rapor dosyaları
 allure-results/
-allure-report/ 
+allure-report/
+results/
+reports/
+coverage/
+htmlcov/
+.pytest_cache/
+
+# Ortam değişkenleri
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Diğer
+.DS_Store
+Thumbs.db 
