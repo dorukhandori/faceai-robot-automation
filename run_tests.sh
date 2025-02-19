@@ -1,22 +1,22 @@
 #!/bin/bash
 
-# PYTHONPATH'i ayarla
+# Set PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 
-# Allure raporlarını temizle
+# Clean Allure reports
 echo "Cleaning previous Allure reports..."
 rm -rf ./allure-results
 rm -rf ./allure-report
 
-# Appium sunucusunu başlat
+# Start Appium server
 echo "Starting Appium server..."
 appium &
 APPIUM_PID=$!
 
-# Appium'un başlaması için kısa bir bekleme
+# Short wait for Appium to start
 sleep 10
 
-# Appium sunucusunun çalıştığını kontrol et
+# Check if Appium server is running
 if ! curl -s http://localhost:4723/status | grep -q "build"; then
   echo "Appium server could not be started!"
   kill $APPIUM_PID
@@ -25,7 +25,7 @@ fi
 
 echo "Appium server started successfully."
 
-# Testleri Allure raporlarıyla çalıştır
+# Run tests with Allure reports
 echo "Running tests..."
 robot --variable PYTHONPATH:$(pwd) \
       --pythonpath . \
@@ -35,13 +35,13 @@ robot --variable PYTHONPATH:$(pwd) \
       --outputdir results \
       ./tests/faceai_tests.robot
 
-# Allure raporlarını oluştur
+# Generate Allure reports
 echo "Generating Allure reports..."
 allure generate allure-results -o allure-report --clean
 
-# Allure raporlarını otomatik olarak aç
+# Open Allure reports automatically
 allure open allure-report &
 
-# Appium sunucusunu durdur
+# Stop Appium server
 echo "Stopping Appium server..."
 kill $APPIUM_PID

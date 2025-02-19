@@ -15,7 +15,7 @@ class BasePage:
         
     @keyword
     def wait_until_element_visible(self, locator, timeout=10):
-        """Belirtilen süre içinde elementin görünür olmasını bekler"""
+        """Waits for the element to be visible within specified timeout"""
         try:
             WebDriverWait(self.appium._current_application(), timeout).until(
                 EC.visibility_of_element_located(locator)

@@ -1,0 +1,17 @@
+# iOS Test Environment Settings
+ios:
+  appium:platformName: 'iOS'
+  appium:automationName: 'XCUITest'
+  appium:deviceName: 'iPhone(2)'
+  appium:platformVersion: '15'
+  appium:bundleId: 'co.koiapps.faceai'
+  appium:udid: 'YOUR_DEVICE_UDID'  # Replace with your device UDID
+  appium:xcodeOrgId: 'YOUR_TEAM_ID'  # Replace with your Team ID
+  appium:app: '/path/to/your/FaceAI.app'  # Replace with your .app path
+  appium:xcodeSigningId: 'Apple Distributor'
+  appium:noReset: true
+  appium:fullReset: false
+  appium:useNewWDA: false
+  appium:usePrebuiltWDA: true
+  appium:autoAcceptAlerts: true
+  appium:newCommandTimeout: 60000 

@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    Face AI Uygulaması Test Suite
+Documentation    Face AI Application Test Suite
 Library    AppiumLibrary
 Library    ${CURDIR}/../utils/driver_factory.py    WITH NAME    Driver
 Resource   ${CURDIR}/../resources/steps/faceai_steps.robot
@@ -17,20 +17,20 @@ Cleanup Driver
 
 *** Test Cases ***
 Verify App Launch
-    [Documentation]    Uygulamanın başarıyla başlatıldığını doğrular
+    [Documentation]    Verifies that the application is launched successfully
     [Tags]    smoke    launch    allure
     Given Application Is Launched
-    Then Log    Uygulama başarıyla başlatıldı!
+    Then Log    Application launched successfully!
 
 Verify Paywall Screen Appears Within 10 Seconds
-    [Documentation]    Paywall ekranının 10 saniye içinde görünür olduğunu doğrular
+    [Documentation]    Verifies that paywall screen appears within 10 seconds
     [Tags]    smoke    paywall    allure
     Given Application Is Launched
     When Verify Paywall Screen Appears Within Timeout    10
-    Then Log    Paywall ekranı başarıyla görüntülendi!
+    Then Log    Paywall screen displayed successfully!
 
 Verify All Subscription Plans Are Visible
-    [Documentation]    Tüm abonelik planlarının görünür olduğunu doğrular
+    [Documentation]    Verifies that all Subscription Plans Are Visible
     [Tags]    smoke    paywall    allure
     Given Application Is Launched
     When Verify Paywall Screen Appears Within Timeout    10

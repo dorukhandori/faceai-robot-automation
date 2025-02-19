@@ -52,4 +52,7 @@ htmlcov/
 
 # Diğer
 .DS_Store
-Thumbs.db 
+Thumbs.db
+
+# Environment files
+envm.yaml 

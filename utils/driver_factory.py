@@ -25,7 +25,7 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 class DriverFactory:
-    """Robot Framework için Appium Driver yönetimi"""
+    """Appium Driver management for Robot Framework"""
     
     ROBOT_LIBRARY_SCOPE = 'GLOBAL'
     ROBOT_AUTO_KEYWORDS = True
@@ -53,11 +53,11 @@ class DriverFactory:
         self.session.mount('http://', HTTPAdapter(max_retries=retries))
     
     def get_appium_driver(self) -> WebDriver:
-        """Appium driver'ı oluşturur ve döndürür"""
+        """Creates and returns Appium driver"""
         try:
             logger.info("Creating Appium driver...")
             
-            # iOS için capabilities ayarları
+            # iOS capabilities settings
             capabilities = {
                 'appium:platformName': 'iOS',
                 'appium:automationName': 'XCUITest',
@@ -75,15 +75,15 @@ class DriverFactory:
                 'appium:newCommandTimeout': 60000
             }
             
-            # XCUITest options oluştur
+            # Create XCUITest options
             options = XCUITestOptions()
             for key, value in capabilities.items():
                 options.set_capability(key, value)
             
-            # Appium bağlantı URL'i - Appium 2.0 için güncellenmiş URL
+            # Appium connection URL - Updated URL for Appium 2.0
             appium_url = 'http://localhost:4723'
             
-            # Driver'ı başlat
+            # Initialize driver
             self.driver = self.appium.open_application(
                 appium_url,
                 **capabilities
@@ -97,7 +97,7 @@ class DriverFactory:
             raise
     
     def is_driver_initialized(self) -> bool:
-        """WebDriver'ın başlatılıp başlatılmadığını kontrol eder"""
+        """Checks if WebDriver is initialized"""
         try:
             if self.appium._current_application():
                 return True
@@ -106,7 +106,7 @@ class DriverFactory:
             return False
     
     def quit_appium_driver(self):
-        """Appium driver'ı kapatır"""
+        """Closes Appium driver"""
         try:
             if self.driver:
                 self.driver.quit()
@@ -118,10 +118,10 @@ class DriverFactory:
             raise
 
     def run_tests(self):
-        """Testleri çalıştırır"""
+        """Runs the tests"""
         try:
             print("\n" + "="*80)
-            print("TESTLER ÇALIŞTIRILIYOR...")
+            print("RUNNING TESTS...")
             print("="*80 + "\n")
             result = subprocess.run(["robot", "tests/faceai_tests.robot"], capture_output=True, text=True)
             print(result.stdout)

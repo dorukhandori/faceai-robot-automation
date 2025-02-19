@@ -1,12 +1,12 @@
-# iOS Test Ortamı Ayarları
+# iOS Test Environment Settings
 ios:
   appium:platformName: 'iOS'
   appium:automationName: 'XCUITest'
   appium:deviceName: 'iPhone(2)'
   appium:platformVersion: '15'
   appium:bundleId: 'co.koiapps.faceai'
-  appium:udid: '15b95c4404b92c876d5aab4e4e1a5b896febc4c1'
-  appium:xcodeOrgId: 'YOUR_TEAM_ID'  # security find-identity'den
+  appium:udid: '${UDID}'  # UDID environment variable'dan alınacak
+  appium:xcodeOrgId: '${TEAM_ID}'  # security find-identity'den
   appium:app: '/path/to/your/FaceAI.app'  # .app dosyasının yolu
   appium:xcodeSigningId: 'Apple Distributor'
   appium:noReset: true
@@ -16,7 +16,7 @@ ios:
   appium:autoAcceptAlerts: true
   appium:newCommandTimeout: 60000
 
-# Appium Sunucu Ayarları
+# Appium Server Settings
 appium:
   host: 'localhost'
   port: 4723

@@ -29,9 +29,19 @@ Verify Yearly Plan Elements Are Present
     Should Be True    ${result}    Yearly plan elements are not visible!
 
 Verify Lifetime Plan Elements Are Present
-    [Documentation]    Verifies that lifetime plan elements are visible
+    [Documentation]    Verifies that lifetime plan element is visible
     ${result}=    Paywall.Verify Lifetime Plan Elements Are Visible
     Should Be True    ${result}    Lifetime plan element is not visible!
+
+Verify Try Now Button Is Present
+    [Documentation]    Verifies that Try Now button is visible
+    ${result}=    Paywall.Verify Try Now Button Is Visible
+    Should Be True    ${result}    Try Now button is not visible!
+
+Verify Close Button Is Present
+    [Documentation]    Verifies that close button is visible
+    ${result}=    Paywall.Verify Close Button Is Visible
+    Should Be True    ${result}    Close button is not visible!
 
 Check Appium Logs For Success
     [Documentation]    Checks Appium logs for successful HTTP request
