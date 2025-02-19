@@ -3,6 +3,11 @@
 # PYTHONPATH'i ayarla
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 
+# Allure raporlarını temizle
+echo "Önceki Allure raporları temizleniyor..."
+rm -rf ./allure-results
+rm -rf ./allure-report
+
 # Appium sunucusunu başlat
 echo "Appium sunucusu başlatılıyor..."
 
@@ -36,9 +41,16 @@ fi
 
 echo "Appium sunucusu başarıyla başlatıldı."
 
-# Testleri çalıştır
+# Testleri Allure raporlarıyla çalıştır
 echo "Testler çalıştırılıyor..."
-robot -V envm.yaml -v ENVIRONMENT:ios_real_device tests/faceai_tests.robot
+robot --listener allure_robotframework ./tests/faceai_tests.robot
+
+# Allure raporlarını oluştur
+echo "Allure raporları oluşturuluyor..."
+allure generate ./allure-results -o ./allure-report --clean
+
+# Allure raporlarını otomatik olarak aç
+allure open ./allure-report
 
 # Appium sunucusunu durdur
 echo "Appium sunucusu durduruluyor..."

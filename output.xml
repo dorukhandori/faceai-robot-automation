@@ -1,302 +1,311 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.13.2 on darwin)" generated="2025-02-17T16:32:04.959133" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2.2 (Python 3.13.2 on darwin)" generated="2025-02-19T12:55:23.577619" rpa="false" schemaversion="5">
 <suite id="s1" name="Faceai Tests" source="/Users/dori/faceai_test/tests/faceai_tests.robot">
 <kw name="Initialize Driver" type="SETUP">
 <kw name="Get Appium Driver" owner="Driver">
-<msg time="2025-02-17T16:32:05.095461" level="INFO">Appium driver oluşturuluyor...</msg>
-<msg time="2025-02-17T16:33:14.123099" level="INFO">Appium driver başarıyla oluşturuldu</msg>
-<msg time="2025-02-17T16:33:14.124554" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="27cb63e2-6eda-4fcf-88ab-bf5bfe0d1ad5")&gt;</msg>
+<msg time="2025-02-19T12:55:23.731199" level="INFO">Appium driver oluşturuluyor...</msg>
+<msg time="2025-02-19T12:56:31.939289" level="INFO">Appium driver başarıyla oluşturuldu</msg>
+<msg time="2025-02-19T12:56:31.940617" level="INFO">${driver} = &lt;appium.webdriver.webdriver.WebDriver (session="a649ccf3-41e2-45ed-8eff-ec5891ca845d")&gt;</msg>
 <var>${driver}</var>
 <doc>Appium driver'ı oluşturur ve döndürür</doc>
-<status status="PASS" start="2025-02-17T16:32:05.095379" elapsed="69.029312"/>
+<status status="PASS" start="2025-02-19T12:55:23.731098" elapsed="68.209673"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-02-17T16:33:14.127040" level="INFO">${DRIVER} = &lt;appium.webdriver.webdriver.WebDriver (session="27cb63e2-6eda-4fcf-88ab-bf5bfe0d1ad5")&gt;</msg>
+<msg time="2025-02-19T12:56:31.945084" level="INFO">${DRIVER} = &lt;appium.webdriver.webdriver.WebDriver (session="a649ccf3-41e2-45ed-8eff-ec5891ca845d")&gt;</msg>
 <arg>${DRIVER}</arg>
 <arg>${driver}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-02-17T16:33:14.126241" elapsed="0.000876"/>
+<status status="PASS" start="2025-02-19T12:56:31.944476" elapsed="0.000697"/>
 </kw>
-<status status="PASS" start="2025-02-17T16:32:05.095248" elapsed="69.032014"/>
+<status status="PASS" start="2025-02-19T12:55:23.730951" elapsed="68.214876"/>
 </kw>
 <test id="s1-t1" name="Verify Paywall Screen Appears" line="18">
 <kw name="Given Application Is Launched" owner="faceai_steps">
 <kw name="Is Driver Initialized" owner="Driver">
-<msg time="2025-02-17T16:33:14.359634" level="INFO">${is_initialized} = True</msg>
+<msg time="2025-02-19T12:56:32.321999" level="INFO">${is_initialized} = True</msg>
 <var>${is_initialized}</var>
 <doc>WebDriver'ın başlatılıp başlatılmadığını kontrol eder</doc>
-<status status="PASS" start="2025-02-17T16:33:14.129425" elapsed="0.230283"/>
+<status status="PASS" start="2025-02-19T12:56:31.947744" elapsed="0.374304"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <arg>not ${is_initialized}</arg>
 <arg>Fatal Error</arg>
 <arg>WebDriver başlatılamadı!</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-02-17T16:33:14.360087" elapsed="0.000401"/>
+<status status="PASS" start="2025-02-19T12:56:32.322726" elapsed="0.000255"/>
 </kw>
 <kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:14.362039" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:32.324002" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:14.361696" elapsed="0.005906">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:32.323745" elapsed="0.003845">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:14.368753" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:14.368938" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:32.328978" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:32.329229" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:14.361115" elapsed="0.008289">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:32.323439" elapsed="0.006406">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:16.371285" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:34.333290" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:16.371004" elapsed="0.002274">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:34.332797" elapsed="0.003398">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:16.375155" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:16.375430" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:34.339970" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:34.340278" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:16.370501" elapsed="0.005863">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:34.331474" elapsed="0.009756">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:18.378945" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:36.345616" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:18.378600" elapsed="0.003099">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:36.345111" elapsed="0.002769">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:18.383410" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:18.383694" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:36.351028" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:36.351379" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:18.377891" elapsed="0.006765">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:36.343718" elapsed="0.008709">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:20.387761" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:38.357875" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:20.387311" elapsed="0.002932">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:38.355785" elapsed="0.004829">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:20.391887" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:20.392131" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:38.363076" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:38.363428" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:20.386334" elapsed="0.006540">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:38.355040" elapsed="0.009602">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:22.396589" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:40.367695" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:22.396162" elapsed="0.002861">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:40.367276" elapsed="0.002596">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:22.400622" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:22.400856" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:40.372480" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:40.372834" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:22.395340" elapsed="0.006255">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:40.366316" elapsed="0.007707">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:24.403804" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:42.377562" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:24.403397" elapsed="0.002848">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:42.377197" elapsed="0.002905">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:24.408204" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:24.408479" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:42.383206" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:42.383518" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:24.402652" elapsed="0.006716">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:42.376244" elapsed="0.008300">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:26.412857" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:44.386484" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:26.412432" elapsed="0.002963">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:44.386280" elapsed="0.001399">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:26.416975" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:26.417189" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:44.389035" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:44.389182" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:26.411518" elapsed="0.006476">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:44.385915" elapsed="0.003800">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:28.420338" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:46.392058" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:28.419964" elapsed="0.003057">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:46.391949" elapsed="0.000738">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:28.424676" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:28.424918" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:46.393528" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:46.393621" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:28.419359" elapsed="0.006500">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:46.391738" elapsed="0.002214">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:30.429485" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:48.395230" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:30.429038" elapsed="0.003440">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:48.395051" elapsed="0.001527">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:30.434189" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:30.434496" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:48.398118" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:48.398381" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:30.428153" elapsed="0.007357">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:48.394719" elapsed="0.004378">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:32.437877" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:50.401303" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:32.437442" elapsed="0.002823">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:50.400872" elapsed="0.002473">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:32.441938" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:32.442210" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:50.405481" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:50.405743" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:32.436585" elapsed="0.006768">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:50.400087" elapsed="0.006546">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:34.446603" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:52.410991" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:34.446171" elapsed="0.002819">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:52.410433" elapsed="0.002393">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:34.450704" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:34.450930" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:52.414844" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:52.415140" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:34.445321" elapsed="0.006395">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:52.409721" elapsed="0.006413">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:36.455576" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:54.419506" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:36.455123" elapsed="0.003473">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:54.418962" elapsed="0.003098">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:36.460467" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:36.460752" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:54.424526" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:54.425035" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:36.454249" elapsed="0.007387">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:54.417837" elapsed="0.008495">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:38.464082" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:56.430177" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:38.463697" elapsed="0.002791">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:56.429872" elapsed="0.002319">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:38.468426" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:38.468645" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:56.435373" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:56.435701" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:38.463113" elapsed="0.006360">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:56.429101" elapsed="0.007650">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:40.473131" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:58.440773" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:40.472706" elapsed="0.009320">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:58.440418" elapsed="0.002900">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:40.482875" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:40.483039" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:56:58.445685" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:58.445977" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:40.471887" elapsed="0.011657">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:58.439287" elapsed="0.007575">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:42.485932" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:57:00.450134" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:42.485494" elapsed="0.002920">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:57:00.449597" elapsed="0.003200">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:42.490125" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:42.490358" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:57:00.455463" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:57:00.455834" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:42.484634" elapsed="0.006477">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:57:00.448453" elapsed="0.008368">No application is open</status>
 </kw>
 <kw name="Page Should Contain Element" owner="AppiumLibrary">
 <kw name="Capture Page Screenshot" owner="AppiumLibrary">
-<msg time="2025-02-17T16:33:44.495165" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:57:02.460255" level="FAIL">No application is open</msg>
 <doc>Takes a screenshot of the current page and embeds it into the log.</doc>
-<status status="FAIL" start="2025-02-17T16:33:44.494722" elapsed="0.003318">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:57:02.459775" elapsed="0.002998">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:44.499817" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:44.500085" level="FAIL">No application is open</msg>
+<msg time="2025-02-19T12:57:02.465727" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:57:02.466144" level="FAIL">No application is open</msg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Verifies that current page contains `locator` element.</doc>
-<status status="FAIL" start="2025-02-17T16:33:44.493893" elapsed="0.007034">No application is open</status>
+<status status="FAIL" start="2025-02-19T12:57:02.458780" elapsed="0.008457">No application is open</status>
 </kw>
-<msg time="2025-02-17T16:33:44.501060" level="FAIL">Keyword 'Page Should Contain Element' failed after retrying for 30 seconds. The last error was: No application is open</msg>
+<msg time="2025-02-19T12:57:02.468109" level="FAIL">Keyword 'Page Should Contain Element' failed after retrying for 30 seconds. The last error was: No application is open</msg>
 <arg>30s</arg>
 <arg>2s</arg>
 <arg>Page Should Contain Element</arg>
 <arg>xpath=//XCUIElementTypeApplication[@name="Face AI"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]</arg>
 <doc>Runs the specified keyword and retries if it fails.</doc>
-<status status="FAIL" start="2025-02-17T16:33:14.360648" elapsed="30.141172">Keyword 'Page Should Contain Element' failed after retrying for 30 seconds. The last error was: No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:32.323168" elapsed="30.145808">Keyword 'Page Should Contain Element' failed after retrying for 30 seconds. The last error was: No application is open</status>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
 <arg>10s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-02-17T16:33:44.501989" elapsed="0.000025"/>
+<status status="NOT RUN" start="2025-02-19T12:57:02.469673" elapsed="0.000078"/>
 </kw>
 <kw name="Get Library Instance" owner="BuiltIn">
 <var>${paywall_page}</var>
 <arg>PaywallPage</arg>
 <doc>Returns the currently active instance of the specified library.</doc>
-<status status="NOT RUN" start="2025-02-17T16:33:44.502119" elapsed="0.000021"/>
+<status status="NOT RUN" start="2025-02-19T12:57:02.469989" elapsed="0.000063"/>
 </kw>
 <kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
 <arg>30s</arg>
 <arg>2s</arg>
 <arg>Verify Weekly Elements Are Present</arg>
 <doc>Runs the specified keyword and retries if it fails.</doc>
-<status status="NOT RUN" start="2025-02-17T16:33:44.502301" elapsed="0.000018"/>
+<status status="NOT RUN" start="2025-02-19T12:57:02.470305" elapsed="0.000055"/>
 </kw>
-<status status="FAIL" start="2025-02-17T16:33:14.128384" elapsed="30.374259">Keyword 'Page Should Contain Element' failed after retrying for 30 seconds. The last error was: No application is open</status>
+<tag>allure</tag>
+<doc>Launches the application and verifies it is initialized</doc>
+<status status="FAIL" start="2025-02-19T12:56:31.947348" elapsed="30.523339">Keyword 'Page Should Contain Element' failed after retrying for 30 seconds. The last error was: No application is open</status>
 </kw>
 <kw name="When Wait Until Paywall Screen Appears" owner="faceai_steps">
-<status status="NOT RUN" start="2025-02-17T16:33:44.503004" elapsed="0.000034"/>
+<tag>allure</tag>
+<doc>Waits until the paywall screen is visible</doc>
+<status status="NOT RUN" start="2025-02-19T12:57:02.471404" elapsed="0.000134"/>
 </kw>
 <kw name="Then Verify All Paywall Elements Are Present" owner="faceai_steps">
-<status status="NOT RUN" start="2025-02-17T16:33:44.503176" elapsed="0.000017"/>
+<tag>allure</tag>
+<doc>Verifies that all paywall elements are visible</doc>
+<status status="NOT RUN" start="2025-02-19T12:57:02.472039" elapsed="0.000087"/>
 </kw>
 <doc>Verifies that the paywall screen appears with all required elements</doc>
+<tag>allure</tag>
 <tag>paywall</tag>
 <tag>smoke</tag>
-<status status="FAIL" start="2025-02-17T16:33:14.127541" elapsed="30.375850">Keyword 'Page Should Contain Element' failed after retrying for 30 seconds. The last error was: No application is open</status>
+<status status="FAIL" start="2025-02-19T12:56:31.946167" elapsed="30.526331">Keyword 'Page Should Contain Element' failed after retrying for 30 seconds. The last error was: No application is open</status>
 </test>
-<test id="s1-t2" name="Example Test Case" line="26">
+<test id="s1-t2" name="Example Test Case" line="25">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-17T16:33:44.503997" level="INFO">Running the test case...</msg>
+<msg time="2025-02-19T12:57:02.477938" level="INFO">Running the test case...</msg>
 <arg>Running the test case...</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-17T16:33:44.503878" elapsed="0.000159"/>
+<status status="PASS" start="2025-02-19T12:57:02.477366" elapsed="0.000809"/>
 </kw>
 <doc>This is an example test case</doc>
-<status status="PASS" start="2025-02-17T16:33:44.503588" elapsed="0.000533"/>
+<tag>allure</tag>
+<status status="PASS" start="2025-02-19T12:57:02.476341" elapsed="0.002723"/>
 </test>
 <kw name="Cleanup Driver" type="TEARDOWN">
 <kw name="Run Keyword And Ignore Error" owner="BuiltIn">
 <kw name="Quit Appium Driver" owner="Driver">
-<msg time="2025-02-17T16:33:44.504866" level="INFO">[2025-02-17-16-33-44] Driver kapatılıyor...</msg>
-<msg time="2025-02-17T16:33:45.631562" level="INFO">[2025-02-17-16-33-45] Driver başarıyla kapatıldı</msg>
+<msg time="2025-02-19T12:57:02.482496" level="INFO">[2025-02-19-12-57-02] Driver kapatılıyor...</msg>
+<msg time="2025-02-19T12:57:03.622790" level="INFO">[2025-02-19-12-57-03] Driver başarıyla kapatıldı</msg>
 <doc>Appium driver'ı kapatır</doc>
-<status status="PASS" start="2025-02-17T16:33:44.504756" elapsed="1.126956"/>
+<status status="PASS" start="2025-02-19T12:57:02.482207" elapsed="1.140759"/>
 </kw>
 <arg>Driver.Quit Appium Driver</arg>
 <doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
-<status status="PASS" start="2025-02-17T16:33:44.504656" elapsed="1.127229"/>
+<status status="PASS" start="2025-02-19T12:57:02.482017" elapsed="1.142005"/>
 </kw>
-<status status="PASS" start="2025-02-17T16:33:44.504523" elapsed="1.127444"/>
+<status status="PASS" start="2025-02-19T12:57:02.481689" elapsed="1.142661"/>
 </kw>
-<status status="FAIL" start="2025-02-17T16:32:04.961794" elapsed="100.670197"/>
+<status status="FAIL" start="2025-02-19T12:55:23.608953" elapsed="100.015761"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="1" skip="0">allure</stat>
 <stat pass="0" fail="1" skip="0">paywall</stat>
 <stat pass="0" fail="1" skip="0">smoke</stat>
 </tag>
@@ -305,22 +314,22 @@
 </suite>
 </statistics>
 <errors>
-<msg time="2025-02-17T16:32:05.094812" level="WARN">Imported library '/Users/dori/faceai_test/resources/pages/paywall_page.py' contains no keywords.</msg>
-<msg time="2025-02-17T16:33:14.368753" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:16.375155" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:18.383410" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:20.391887" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:22.400622" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:24.408204" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:26.416975" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:28.424676" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:30.434189" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:32.441938" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:34.450704" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:36.460467" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:38.468426" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:40.482875" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:42.490125" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
-<msg time="2025-02-17T16:33:44.499817" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:55:23.730491" level="WARN">Imported library '/Users/dori/faceai_test/resources/pages/paywall_page.py' contains no keywords.</msg>
+<msg time="2025-02-19T12:56:32.328978" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:34.339970" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:36.351028" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:38.363076" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:40.372480" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:42.383206" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:44.389035" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:46.393528" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:48.398118" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:50.405481" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:52.414844" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:54.424526" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:56.435373" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:56:58.445685" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:57:00.455463" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
+<msg time="2025-02-19T12:57:02.465727" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: No application is open</msg>
 </errors>
 </robot>

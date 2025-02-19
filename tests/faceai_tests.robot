@@ -17,13 +17,13 @@ Cleanup Driver
 *** Test Cases ***
 Verify Paywall Screen Appears
     [Documentation]    Verifies that the paywall screen appears with all required elements
-    [Tags]    smoke    paywall
-    
+    [Tags]    smoke    paywall    allure
     Given Application Is Launched
     When Wait Until Paywall Screen Appears
     Then Verify All Paywall Elements Are Present
 
 Example Test Case
     [Documentation]    This is an example test case
+    [Tags]    allure
     Log    Running the test case...
     # Test adımları buraya eklenir 

@@ -5,6 +5,8 @@ Library    ${CURDIR}/../../resources/pages/paywall_page.py
 
 *** Keywords ***
 Application Is Launched
+    [Documentation]    Launches the application and verifies it is initialized
+    [Tags]    allure
     # Driver'ın aktif olduğunu kontrol et
     ${is_initialized}=    Driver.Is Driver Initialized
     Run Keyword If    not ${is_initialized}    Fatal Error    WebDriver başlatılamadı!
@@ -16,6 +18,8 @@ Application Is Launched
     Wait Until Keyword Succeeds    30s    2s    Verify Weekly Elements Are Present
 
 Wait Until Paywall Screen Appears
+    [Documentation]    Waits until the paywall screen is visible
+    [Tags]    allure
     [Arguments]    ${timeout}=30s
     # Driver'ın aktif olduğunu kontrol et
     ${is_initialized}=    Driver.Is Driver Initialized
@@ -32,6 +36,8 @@ Wait Until Paywall Screen Appears
     Capture Page Screenshot
 
 Verify All Paywall Elements Are Present
+    [Documentation]    Verifies that all paywall elements are visible
+    [Tags]    allure
     ${paywall_page}=    Get Library Instance    PaywallPage
     ${result}=    Call Method    ${paywall_page}    verify_paywall_elements
     Should Be True    ${result}    Paywall elements are not visible

@@ -10,7 +10,7 @@ import time
 logger = TestUtils.get_logger(__name__)
 
 class ServerManager:
-    """Appium sunucusunu yöneten sınıf"""
+    """Class to manage the Appium server"""
     
     _instance = None
     _lock = threading.Lock()
@@ -24,10 +24,52 @@ class ServerManager:
         return cls._instance
     
     def __init__(self):
-        if not hasattr(self, '_initialized'):
-            self._server: Optional[subprocess.Popen] = None
-            self.appium_path = "/usr/local/bin/appium"
-            self._initialized = True
+        self._server = None
+        self._log_directory = Path(__file__).parent.parent / "logs"
+        self._log_directory.mkdir(parents=True, exist_ok=True)
+        
+    def start_server(self) -> bool:
+        """Starts the Appium server"""
+        try:
+            if self._server:
+                logger.warning("Appium server is already running")
+                return True
+            
+            logger.info("Starting Appium server...")
+            self._server = subprocess.Popen(
+                ["appium"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+            
+            # Wait for the server to start
+            time.sleep(5)
+            
+            # Check if the server is running
+            if not self.is_server_running():
+                raise Exception("Failed to start Appium server")
+            
+            logger.info("Appium server started successfully")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error starting Appium server: {str(e)}")
+            if self._server:
+                self.stop_server()
+            return False
+    
+    def stop_server(self):
+        """Stops the Appium server"""
+        try:
+            if self._server:
+                logger.info("Stopping Appium server...")
+                self._server.terminate()
+                self._server.wait(timeout=5)
+                self._server = None
+                logger.info("Appium server stopped")
+        except Exception as e:
+            logger.error(f"Error stopping Appium server: {str(e)}")
     
     def _check_xcuitest_driver(self):
         """XCUITest driver'ını kontrol eder ve günceller"""
@@ -100,66 +142,4 @@ class ServerManager:
             response = requests.get('http://127.0.0.1:4723/status', timeout=5)
             return response.status_code == 200
         except:
-            return False
-    
-    def start_server(self):
-        """Appium sunucusunu başlatır"""
-        logger.info("Appium sunucusu başlatılıyor...")
-        
-        # Log dizini oluştur
-        log_dir = Path("logs")
-        log_dir.mkdir(parents=True, exist_ok=True)
-        log_file = log_dir / "appium_server.log"
-        
-        try:
-            # Appium komutu
-            command = [
-                self.appium_path,
-                "--log-level", "debug",
-                "--base-path", "/",
-                "--address", "127.0.0.1",
-                "--port", "4723",
-                "--use-drivers", "xcuitest",
-                "--relaxed-security",
-                "--allow-insecure", "chromedriver_autodownload"
-            ]
-            
-            logger.info(f"Komut çalıştırılıyor: {' '.join(command)}")
-            
-            # Sunucuyu başlat
-            with open(log_file, 'w') as log_output:
-                self._server = subprocess.Popen(
-                    command,
-                    env=os.environ.copy(),
-                    stdout=log_output,
-                    stderr=subprocess.STDOUT,
-                    text=True
-                )
-            
-            # Sunucunun başlamasını bekle
-            time.sleep(5)
-            
-            # Sunucunun çalışıp çalışmadığını kontrol et
-            if not self.is_server_running():
-                raise Exception("Appium sunucusu başlatılamadı")
-            
-            logger.info("Appium sunucusu başarıyla başlatıldı")
-            return True
-            
-        except Exception as e:
-            logger.error(f"Appium sunucusu başlatılırken hata: {str(e)}")
-            if self._server:
-                self.stop_server()
-            return False
-    
-    def stop_server(self):
-        """Appium sunucusunu durdurur"""
-        try:
-            if self._server:
-                logger.info("Appium sunucusu durduruluyor...")
-                self._server.terminate()
-                self._server.wait(timeout=5)
-                self._server = None
-                logger.info("Appium sunucusu durduruldu")
-        except Exception as e:
-            logger.error(f"Appium sunucusu durdurulurken hata: {str(e)}") 
+            return False 

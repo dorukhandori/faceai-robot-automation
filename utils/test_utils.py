@@ -19,11 +19,11 @@ class TestUtils:
         return string_map
     
     @staticmethod
-    def get_datetime() -> str:
-        """Şu anki tarih ve zamanı formatlanmış string olarak döndürür"""
+    def get_current_timestamp() -> str:
+        """Returns the current timestamp in the format YYYY-MM-DD-HH-MM-SS"""
         return datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
     
     @staticmethod
     def get_logger(class_name: str) -> logging.Logger:
-        """Belirtilen sınıf için logger döndürür"""
+        """Returns a logger for the specified class"""
         return logging.getLogger(class_name) 

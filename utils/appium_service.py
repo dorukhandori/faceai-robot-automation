@@ -17,25 +17,25 @@ class AppiumService:
         self.process = None
         self.node_path = "/usr/local/bin/node"
         self.appium_main = "/usr/local/lib/node_modules/appium/build/lib/main.js"
-        # Log dizinini proje kök dizininde oluştur
+        # Create log directory in the project root
         self.log_directory = Path(__file__).parent.parent / "logs"
         self.port = port
         
     def get_environment(self) -> Dict[str, str]:
-        """Appium sunucusu için gerekli ortam değişkenlerini ayarlar"""
+        """Sets the necessary environment variables for the Appium server"""
         env = os.environ.copy()
         
-        # Java path ayarları
+        # Java path settings
         java_home = "/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home"
         env["JAVA_HOME"] = java_home
         env["PATH"] = f"{java_home}/bin:{env.get('PATH', '')}"
         
-        # Android SDK path ayarları
+        # Android SDK path settings
         android_home = os.path.expanduser("~/Library/Android/sdk")
         env["ANDROID_HOME"] = android_home
         env["PATH"] = f"{android_home}/platform-tools:{env['PATH']}"
         
-        # Node.js ve Appium path ayarları
+        # Node.js and Appium path settings
         env["PATH"] = f"/usr/local/bin:{env['PATH']}"
         
         return env
@@ -135,49 +135,63 @@ class AppiumService:
         except Exception as e:
             logger.error(f"[{TestUtils.get_datetime()}] Appium sunucusu durdurulurken hata: {str(e)}")
 
-    def start(self):
-        """Appium sunucusunu başlatır ve loglarını gösterir."""
+    def start(self) -> bool:
+        """Starts the Appium server"""
         try:
-            logger.info("Appium sunucusu başlatılıyor...")
+            # Create log directory if it doesn't exist
+            self.log_directory.mkdir(parents=True, exist_ok=True)
+            
+            # Start the Appium server
+            logger.info("Starting Appium server...")
             self.process = subprocess.Popen(
-                ["appium", "--port", str(self.port)],
+                [self.node_path, self.appium_main, "--port", str(self.port)],
+                env=self.get_environment(),
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                universal_newlines=True
+                text=True
             )
-            time.sleep(5)  # Sunucunun başlaması için kısa bir bekleme
-            logger.info(f"Appium sunucusu {self.port} portunda başlatıldı.")
             
-            # Logları gerçek zamanlı olarak göster
-            while True:
-                output = self.process.stdout.readline()
-                if output == '' and self.process.poll() is not None:
-                    break
-                if output:
-                    logger.info(output.strip())
+            # Wait for the server to start
+            time.sleep(10)
+            
+            # Check if the server is running
+            if not self.is_running():
+                logger.error("Failed to start Appium server")
+                return False
+            
+            logger.info("Appium server started successfully")
+            return True
         except Exception as e:
-            logger.error(f"Appium sunucusu başlatılırken hata: {str(e)}")
-            raise
+            logger.error(f"Error starting Appium server: {str(e)}")
+            return False
+
+    def is_running(self) -> bool:
+        """Checks if the Appium server is running"""
+        try:
+            response = requests.get(f"http://127.0.0.1:{self.port}/status")
+            return response.status_code == 200
+        except:
+            return False
 
     def stop(self):
-        """Appium sunucusunu durdurur."""
+        """Stops the Appium server"""
         if self.process:
-            logger.info("Appium sunucusu durduruluyor...")
+            logger.info("Stopping Appium server...")
             self.process.terminate()
-            self.process.wait()
-            logger.info("Appium sunucusu durduruldu.")
+            self.process.wait(timeout=5)
+            logger.info("Appium server stopped.")
         else:
-            logger.warning("Appium sunucusu zaten çalışmıyor.")
+            logger.warning("Appium server is not running.")
 
-# Örnek kullanım
+# Example usage
 if __name__ == "__main__":
     appium_service = AppiumService()
     appium_service.start()
     try:
-        # Testler burada çalıştırılabilir
+        # Tests can be executed here
         pass
     finally:
         appium_service.stop()
 
-# Robot Framework tarafından tanınması için sınıfı dışa aktar
+# Export the class for Robot Framework
 AppiumService = AppiumService() 
